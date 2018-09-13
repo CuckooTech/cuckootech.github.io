@@ -1,0 +1,1 @@
+const CUCKOOGITHUBAPI = "https://api.github.com/repos/CuckooTech/release/releases/latest";
