@@ -1,3 +1,0 @@
-# 
-
-Cuckoo Offical Website.
