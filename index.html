@@ -43,7 +43,18 @@
                         <a id="macZIP" target="_blank" href="https://github.com/CuckooTech/release" class="btn btn-lg btn-block btn-outline-primary">Get Portable</a>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col-sm">
+                    <img src="./assets/img/cuckoo-index.png" class="img-thumbnail" style="cursor: pointer;">
+                </div>
+                <div class="col-sm">
+                    <img src="./assets/img/cuckoo-list.png" class="img-thumbnail" style="cursor: pointer;">
+                </div>
+                <div class="col-sm">
+                    <img src="./assets/img/cuckoo-player.png" class="img-thumbnail" style="cursor: pointer;">
+                </div>
             </div>
 
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -90,6 +101,15 @@
                 </div>
             </footer>
         </div>
+
+        <div class="modal fade" id="imgModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <img class="img-fluid">
+                </div>
+            </div>
+        </div>
+
         <script src="./assets/js/base.js"></script>
         <script src="./assets/js/jquery.js"></script>
         <script src="./assets/js/popper.min.js"></script>
@@ -151,6 +171,11 @@
             if (typeof version !="undefined" && version != "") {
                 $("#currentVersion").html("Current Version:v"+version);
             }
+
+            $("img").click(function() {
+                $("#imgModal img").attr("src", $(this).attr("src"));
+                $("#imgModal").modal("show");
+            });
         </script>
 
     </body>
