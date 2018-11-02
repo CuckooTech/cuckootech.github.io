@@ -51,6 +51,17 @@
                         <a id="macZIP" target="blank" class="btn btn-lg btn-block btn-outline-primary" href="https://github.com/CuckooTech/release/releases">Download Portable</a>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Cuckoo for Android</h4>
+                    </div>
+                    <div class="card-body pt-0">
+                        <img src="/assets/img/cuckoo-android.png" class="mw-100 p-5">
+
+                        <a id="androidInstall" target="blank" class="btn btn-lg btn-block btn-outline-primary" href="https://github.com/CuckooTech/release/releases">Download APK</a>
+                    </div>
+                </div>
             </div>
 
             <footer class="pt-4 my-5 pt-md-5 border-top">
@@ -78,6 +89,7 @@
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="/download/">Windows</a></li>
                 <li><a class="text-muted" href="/download/">macOS</a></li>
+                <li><a class="text-muted" href="/download/">Android</a></li>
             </ul>
         </div>
 
@@ -100,15 +112,15 @@
         <script src="/assets/js/base.js"></script>
 
         <script type="text/javascript">
-            var win32Install,win32ZIP,macInstall,macZIP;
-            win32Install = win32ZIP = macInstall = macZIP = "https://github.com/CuckooTech/release/releases";
+            var win32Install,win32ZIP,macInstall,macZIP,androidInstall;
+            win32Install = win32ZIP = macInstall = macZIP = androidInstall = "https://github.com/CuckooTech/release/releases";
             fetch(CUCKOOGITHUBAPI)
             .then(function (response) {
                 return response.json();
             })
             .then((data) => {
                 for (var i = 0; i < data.assets.length; i++) {
-                    var re = /(darwin|win32|linux)-(.*?)\.(dmg|zip|exe)/i;
+                    var re = /(darwin|win32|linux|android)-(.*?)\.(dmg|zip|exe|apk)/i;
                     match = data.assets[i].name.match(re);
                     downUrl = data.assets[i].browser_download_url;
                     if (match != null) {
@@ -127,6 +139,9 @@
                                     win32ZIP = downUrl
                                 }
                             }
+                            if (match[1] == "android") {
+                                androidInstall = downUrl
+                            }
                         }
                     }
                 }
@@ -139,6 +154,9 @@
                 document.querySelector("#macInstall").setAttribute('target', '');
                 document.querySelector("#macZIP").setAttribute('href', macZIP);
                 document.querySelector("#macZIP").setAttribute('target', '');
+                document.querySelector("#macInstall").setAttribute('target', '');
+                document.querySelector("#androidInstall").setAttribute('href', androidInstall);
+                document.querySelector("#androidInstall").setAttribute('target', '');
             });
         </script>
 
